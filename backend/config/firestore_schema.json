@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Firestore Collections Schema (Autonomous Research Desk)",
+  "type": "object",
+  "properties": {
+    "strategy_registry": {
+      "type": "object",
+      "description": "Collection of strategies and configuration parameters.",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "properties": {
+            "strategy_id": {"type": "string"},
+            "name": {"type": "string"},
+            "conviction_threshold": {"type": "number"},
+            "allowed_regimes": {"type": "array", "items": {"type": "string"}},
+            "max_exposure_per_ticker_pct": {"type": "number"},
+            "news_sentiment_min": {"type": "number"},
+            "enable_self_correction": {"type": "boolean"},
+            "self_correction_rules": {"type": "object"}
+          },
+          "required": ["strategy_id", "name", "conviction_threshold", "allowed_regimes"]
+        }
+      }
+    },
+    "mock_trades": {
+      "type": "object",
+      "description": "Strategy-specific mock trading results with thesis JSON and performance metrics."
+    },
+    "target_universe": {
+      "type": "object",
+      "description": "Universe of screened stocks for each trading session."
+    },
+    "system_state": {
+      "type": "object",
+      "description": "State variables, including market regime broadcasted by Sentinel."
+    }
+  },
+  "required": ["strategy_registry", "mock_trades", "target_universe", "system_state"]
+}
