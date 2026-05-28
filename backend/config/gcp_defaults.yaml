@@ -1,0 +1,16 @@
+# GCP Config Defaults (Autonomous Research Desk)
+
+free_tier:
+  cloud_functions:
+    max_invocations_per_month: 2000000
+    max_gb_seconds: 400000
+  firestore:
+    max_storage_gb: 1
+    max_reads_per_day: 50000
+    max_writes_per_day: 20000
+  bigquery:
+    max_query_tb: 1
+
+allow_paid_services: false
+universe_size_cap: 300
+throttling_warn_pct: 0.80  # Warn when hitting 80% of any quota
